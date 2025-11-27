@@ -26,13 +26,24 @@ function App() {
       if (product) {
         setProductDetails({ ...product, quantity: 1 });
 
+        // setRecentProduct(prev => {
+        //   const isDuplicate = prev.some(item => item.barcode === product.barcode);
+        //   if (!isDuplicate) {
+        //     return [product, ...prev.slice(0, 4)];
+        //   }
+        //   return prev;
+        // });
         setRecentProduct(prev => {
-          const isDuplicate = prev.some(item => item.barcode === product.barcode);
-          if (!isDuplicate) {
-            return [product, ...prev.slice(0, 4)];
-          }
-          return prev;
-        });
+  // Remove any existing instance of this product
+  const filtered = prev.filter(item => item.barcode !== product.barcode);
+
+  // Insert the new product at index 0
+  const updated = [product, ...filtered];
+
+  // Keep only 4 items
+  return updated.slice(0, 2);
+});
+
       } else {
         console.log("No product found!");
         setProductDetails(null);
