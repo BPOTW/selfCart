@@ -12,11 +12,13 @@ function App() {
   const [cart, setCart] = useState([]);
 
   async function getProductDetails(barcode) {
-    console.log(`Scanning barcode: ${barcode}`);
+    if (!barcode) return;
+    console.log(`Searching barcode: ${barcode}`);
     setCode(barcode);
 
     try {
-      const response = await axios.post("https://self-cart-server.vercel.app/api/check-barcode",
+      const response = await axios.post(
+        "https://self-cart-server.vercel.app/api/check-barcode",
         { barcode },
         { headers: { "Content-Type": "application/json" } }
       );
@@ -25,6 +27,7 @@ function App() {
       console.log(product)
       if (product) {
         setProductDetails({ ...product, quantity: 1 });
+
         setRecentProduct(prev => {
           const filtered = prev.filter(item => item.barcode !== product.barcode);
           const updated = [product, ...filtered];
@@ -41,6 +44,11 @@ function App() {
       setProductDetails(null);
     }
   }
+
+  // Handle manual input search
+  const handleInputSearch = () => {
+    getProductDetails(code);
+  };
 
   const increaseTemp = () => {
     if (productDetails) {
@@ -72,6 +80,7 @@ function App() {
     }
 
     setProductDetails(null);
+    setCode('');
   };
 
   const increaseCart = (id) => {
@@ -101,7 +110,18 @@ function App() {
 
       <Scanner onDetected={(value) => getProductDetails(value)} />
 
-      {productDetails ? <h2>Product Id :{code}</h2> : <div></div>}
+      <div className="or-div">— or —</div>
+
+      <div className="input-search-div">
+        <input
+          type="text"
+          placeholder="Enter Product ID"
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+          className="product-id-input"
+        />
+        <button className="search-btn" onClick={handleInputSearch}>Search</button>
+      </div>
 
       {productDetails && (
         <div className='product-details-div'>
@@ -170,7 +190,7 @@ function App() {
       )}
 
       {(cart.length === 0 && recentProduct.length === 0 && !productDetails) && (
-        <div className='emptyInfo'>Scan any item to get info</div>
+        <div className='emptyInfo'>Scan any item or enter product ID to get info</div>
       )}
 
       <div className='total-bill-div'>Total Bill Rs.{totalBill.toFixed(2)}</div>
