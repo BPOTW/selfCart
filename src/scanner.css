@@ -1,0 +1,50 @@
+.scanner-container {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  background: black;
+}
+
+.scanner-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scanner-guideBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180px;
+  height: 100px;
+  border: 4px solid white;
+  border-radius: 10px;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+}
+
+.scanner-controls {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 3;
+}
+
+.scanner-button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.scanner-error {
+  color: red;
+  text-align: center;
+  margin-top: 8px;
+}

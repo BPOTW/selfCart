@@ -25,24 +25,11 @@ function App() {
       console.log(product)
       if (product) {
         setProductDetails({ ...product, quantity: 1 });
-
-        // setRecentProduct(prev => {
-        //   const isDuplicate = prev.some(item => item.barcode === product.barcode);
-        //   if (!isDuplicate) {
-        //     return [product, ...prev.slice(0, 4)];
-        //   }
-        //   return prev;
-        // });
         setRecentProduct(prev => {
-  // Remove any existing instance of this product
-  const filtered = prev.filter(item => item.barcode !== product.barcode);
-
-  // Insert the new product at index 0
-  const updated = [product, ...filtered];
-
-  // Keep only 4 items
-  return updated.slice(0, 2);
-});
+          const filtered = prev.filter(item => item.barcode !== product.barcode);
+          const updated = [product, ...filtered];
+          return updated.slice(0, 2);
+        });
 
       } else {
         console.log("No product found!");
@@ -114,7 +101,7 @@ function App() {
 
       <Scanner onDetected={(value) => getProductDetails(value)} />
 
-        <h1>{code}</h1>
+      {productDetails ? <h2>Product Id :{code}</h2> : <div></div>}
 
       {productDetails && (
         <div className='product-details-div'>
