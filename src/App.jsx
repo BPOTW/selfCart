@@ -16,7 +16,7 @@ function App() {
     setCode(barcode);
 
     try {
-      const response = await axios.post("https://localhost:5050/api/check-barcode",
+      const response = await axios.post("https://self-cart-server.vercel.app/api/check-barcode",
         { barcode },
         { headers: { "Content-Type": "application/json" } }
       );
