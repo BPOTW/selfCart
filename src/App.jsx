@@ -108,6 +108,9 @@ function App() {
       {/* Scanner Always Active */}
       <Scanner onDetected={(value) => getProductDetails(value)} />
 
+      <h1>{code}</h1>
+      <h1>{productDetails}</h1>
+
       {/* PRODUCT DETAILS SECTION */}
       {productDetails && (
         <div className='product-details-div'>
