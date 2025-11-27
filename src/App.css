@@ -1,0 +1,385 @@
+.body{
+    overflow-y: auto;
+}
+
+.header {
+  width: 100vw;
+  height: 40px;
+  background-color: rgb(226, 128, 16);
+  /*  */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*  */
+  font-size: 24px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(255, 255, 255);
+}
+
+.scanner-btn {
+  width: 95vw;
+  height: 60px;
+  background-color: rgb(226, 128, 16);
+  border-radius: 10px;
+  gap: 10px;
+  /*  */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*  */
+  font-size: 22px;
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(255, 255, 255);
+  /*  */
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.product-details-div {
+  width: 95vw;
+  height: 150px;
+  background-color: rgb(243, 243, 243);
+  border-radius: 10px;
+  /*  */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /*  */
+  margin: 0 auto;
+  margin-top: 20px;
+  padding-top: 10px;
+}
+
+.product-name {
+  font-size: 18px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(226, 128, 16);
+  padding-left: 10px;
+}
+
+.product-price {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(48, 48, 48);
+  padding-left: 10px;
+}
+
+.product-count-div {
+  display: flex;
+  padding-left: 10px;
+}
+
+.count-decrease-btn {
+  width: 25px;
+  height: 25px;
+  background-color: rgb(226, 128, 16);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.product-count {
+  width: 30px;
+  height: 30px;
+  font-weight: 500;
+  border-radius: 5px;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.count-increase-btn {
+  width: 25px;
+  height: 25px;
+  background-color: rgb(226, 128, 16);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.add-to-cart-btn {
+  width: 100%;
+  height: 40px;
+  background-color: rgb(226, 128, 16);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.recent-scanned-items-div {
+  width: 95vw;
+  border-radius: 10px;
+  /*  */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*  */
+  margin: 0 auto;
+  margin-top: 20px;
+  padding-top: 10px;
+}
+
+.recent-scanned-item-title {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(48, 48, 48);
+  
+}
+
+.recent-scanned-item-div {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  padding-left: 0px;
+  width: 95%;
+  height: 60px;
+  background-color: rgb(243, 243, 243);
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.recent-product-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(29, 29, 29);
+  padding-left: 10px;
+}
+
+.recent-product-price {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(36, 36, 36);
+  padding-left: 10px;
+}
+
+.cart-items-div {
+  width: 95vw;
+  border-radius: 10px;
+  /*  */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*  */
+  margin: 0 auto;
+  margin-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 40px;
+}
+
+.cart-items-title {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(48, 48, 48);
+}
+
+.cart-item-div {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-evenly;
+  padding-left: 0px;
+  width: 95%;
+  height: 90px;
+  background-color: rgb(243, 243, 243);
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.cart-product-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(29, 29, 29);
+  padding-left: 10px;
+}
+
+.cart-product-price {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(36, 36, 36);
+  padding-left: 10px;
+}
+
+.cart-product-controls{
+  display: flex;
+  margin-left: 10px;
+}
+
+.total-bill-div {
+  width: 100vw;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(226, 128, 16);
+  position: fixed;
+  bottom: 0;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(36, 36, 36);
+}
+
+
+
+
+
+
+
+/* Page layout */
+.page-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #e3ecff, #d5d8ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Card */
+.scanner-card {
+  background: white;
+  padding: 30px;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.scanner-title {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-close {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  font-size: 17px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-primary {
+  background: #4c5fff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #3245e5;
+}
+
+.btn-close {
+  background: white;
+  color: #222;
+  position: absolute;
+  bottom: 20px;
+  left: 15px;
+  right: 15px;
+}
+
+/* Results */
+.result {
+  padding: 12px 15px;
+  margin-top: 15px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.success {
+  background: #e6ffe9;
+  border: 2px solid #9df8b1;
+}
+
+.error {
+  background: #ffe7e7;
+  border: 2px solid #ffb4b4;
+}
+
+.code {
+  font-family: monospace;
+  font-size: 18px;
+}
+
+/* Fullscreen scanner */
+.scanner-fullscreen {
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 100;
+}
+
+.scanner-video {
+  position: absolute;
+  inset: 0;
+}
+
+/* Scan frame UI */
+.scan-frame {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  width: 280px;
+  height: 180px;
+  transform: translateX(-50%);
+  border: 3px solid white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.scan-line {
+  width: 100%;
+  height: 3px;
+  background: #5e7bff;
+  animation: scanMove 2s infinite;
+}
+
+@keyframes scanMove {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(180px);
+  }
+}
+
+.scan-instructions {
+  position: absolute;
+  top: 15px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 8px 12px;
+  border-radius: 20px;
+}
+
+.emptyInfo{
+  color: black;
+  font-size: 22px;
+  display: inline;
+  margin: auto;
+}
