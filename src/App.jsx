@@ -16,18 +16,16 @@ function App() {
     setCode(barcode);
 
     try {
-      const response = await axios.post("http://localhost:5050/api/check-barcode",
+      const response = await axios.post("https://localhost:5050/api/check-barcode",
         { barcode },
         { headers: { "Content-Type": "application/json" } }
       );
 
       const product = response.data.product;
-
+      console.log(product)
       if (product) {
-        // Initial quantity = 1 before adding to cart
         setProductDetails({ ...product, quantity: 1 });
 
-        // Update recent products (max 5 items)
         setRecentProduct(prev => {
           const isDuplicate = prev.some(item => item.barcode === product.barcode);
           if (!isDuplicate) {
@@ -40,6 +38,7 @@ function App() {
         setProductDetails(null);
       }
     } catch (error) {
+      setCode(error);
       console.error("Error fetching product:", error);
       setProductDetails(null);
     }
@@ -63,7 +62,6 @@ function App() {
     const existingIndex = cart.findIndex(item => item._id === productDetails._id);
 
     if (existingIndex > -1) {
-      // Already in cart → increase quantity
       setCart(prev =>
         prev.map((item, idx) =>
           idx === existingIndex
@@ -72,11 +70,9 @@ function App() {
         )
       );
     } else {
-      // New item in cart
       setCart(prev => [...prev, productDetails]);
     }
 
-    // Reset product details area
     setProductDetails(null);
   };
 
@@ -105,13 +101,10 @@ function App() {
     <div className='body'>
       <div className='header'>Self Counter</div>
 
-      {/* Scanner Always Active */}
       <Scanner onDetected={(value) => getProductDetails(value)} />
 
-      <h1>{code}</h1>
-      <h1>{productDetails}</h1>
+        <h1>{code}</h1>
 
-      {/* PRODUCT DETAILS SECTION */}
       {productDetails && (
         <div className='product-details-div'>
           <div className='product-name'>{productDetails.name}</div>
@@ -135,7 +128,6 @@ function App() {
         </div>
       )}
 
-      {/* RECENT SCANNED ITEMS */}
       {recentProduct.length > 0 && (
         <div className='recent-scanned-items-div'>
           <div className='recent-scanned-item-title'>Recent Scanned Items</div>
@@ -149,7 +141,6 @@ function App() {
         </div>
       )}
 
-      {/* CART ITEMS */}
       {cart.length > 0 && (
         <div className='cart-items-div'>
           <div className='cart-items-title'>Cart Items</div>
@@ -180,12 +171,10 @@ function App() {
         </div>
       )}
 
-      {/* EMPTY STATE */}
       {(cart.length === 0 && recentProduct.length === 0 && !productDetails) && (
         <div className='emptyInfo'>Scan any item to get info</div>
       )}
 
-      {/* TOTAL BILL */}
       <div className='total-bill-div'>Total Bill Rs.{totalBill.toFixed(2)}</div>
     </div>
   );

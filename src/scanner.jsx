@@ -14,26 +14,46 @@ const Scanner = ({ onDetected, onClose }) => {
   }, []);
 
   const startScanner = async () => {
-    try {
-      const codeReader = new BrowserMultiFormatReader();
-      const devices = await BrowserMultiFormatReader.listVideoInputDevices();
-      const device = devices[devices.length - 1];
+  try {
+    const devices = await BrowserMultiFormatReader.listVideoInputDevices();
+    const device = devices[devices.length - 1];
 
-      controlsRef.current = await codeReader.decodeFromVideoDevice(
-        device.deviceId,
-        videoRef.current,
-        (result) => {
-          if (result) {
-            beep.play().catch(() => {onDetected('error')});
-            onDetected(result.text);
-          }
+    const constraints = {
+      audio: false,
+      video: {
+        deviceId: device.deviceId,
+        facingMode: "environment",
+        focusMode: "continuous",
+        advanced: [
+          { focusMode: "continuous" },
+          { focusMode: "auto" },
+          { zoom: 2 },
+        ]
+      }
+    };
+
+    const stream = await navigator.mediaDevices.getUserMedia(constraints);
+
+    videoRef.current.srcObject = stream;
+
+    const codeReader = new BrowserMultiFormatReader();
+
+    controlsRef.current = await codeReader.decodeFromVideoElement(
+      videoRef.current,
+      (result) => {
+        if (result) {
+          beep.play().catch(()=>{});
+          onDetected(result.text);
         }
-      );
-    } catch (err) {
-      console.error("Camera error:", err);
-      setError("Camera failed to start");
-    }
-  };
+      }
+    );
+
+  } catch (err) {
+    console.error(err);
+    setError("Camera failed to start");
+  }
+};
+
 
   const toggleTorch = async () => {
     if (!controlsRef.current) return;
@@ -85,7 +105,7 @@ const styles = {
     position: "absolute",
     top: "50%",
     left: "50%",
-    width: "220px",
+    width: "180px",
     height: "100px",
     border: "4px solid white",
     borderRadius: "10px",
