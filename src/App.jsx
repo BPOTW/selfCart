@@ -7,13 +7,14 @@ import axios from "axios";
 
 function App() {
   const [code, setCode] = useState('');
+  const [loading, setLoading] = useState(false);
   const [productDetails, setProductDetails] = useState(null);
   const [recentProduct, setRecentProduct] = useState([]);
   const [cart, setCart] = useState([]);
 
   async function getProductDetails(barcode) {
     if (!barcode) return;
-    console.log(`Searching barcode: ${barcode}`);
+    setLoading(true);
     setCode(barcode);
 
     try {
@@ -24,7 +25,7 @@ function App() {
       );
 
       const product = response.data.product;
-      console.log(product)
+      setLoading(false);
       if (product) {
         setProductDetails({ ...product, quantity: 1 });
 
@@ -40,6 +41,7 @@ function App() {
       }
     } catch (error) {
       setCode(error);
+      setLoading(false);
       console.error("Error fetching product:", error);
       setProductDetails(null);
     }
@@ -106,6 +108,11 @@ function App() {
 
   return (
     <div className='body'>
+
+      {
+        loading ? <div className='loading-div'><div className='loading'></div></div> : <div></div>
+      }
+
       <div className='header'>Self Counter</div>
 
       <Scanner onDetected={(value) => getProductDetails(value)} />

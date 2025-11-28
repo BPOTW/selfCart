@@ -284,3 +284,32 @@
 .search-btn:hover {
   background-color: rgb(255, 136, 0);
 }
+
+
+.loading-div {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+
+  z-index: 9999;
+}
+
+.loading {
+  width: 45px;
+  height: 45px;
+  border: 5px solid #ddd;
+  border-top-color: #3498db;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
